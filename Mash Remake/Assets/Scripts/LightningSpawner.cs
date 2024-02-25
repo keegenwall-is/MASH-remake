@@ -43,7 +43,7 @@ public class LightningSpawner : MonoBehaviour
         if (noLightning)
         {
             currentLightningCD -= 1 * Time.deltaTime;
-            Debug.Log(currentLightningCD);
+            //Debug.Log(currentLightningCD);
 
             if (currentLightningCD <= 0)
             {
