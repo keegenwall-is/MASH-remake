@@ -23,6 +23,8 @@ public class SoldiersCarried : MonoBehaviour
 
     private bool isHeliFullSFXPlaying = false;
 
+    public AudioSource solPickupSFX;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -66,6 +68,8 @@ public class SoldiersCarried : MonoBehaviour
             //Debug.Log(noOfSol);
 
             currentSol.text = "Soldiers in Helicopter: " + noOfSol;
+
+            solPickupSFX.Play();
         }
 
         if (collision.gameObject.tag == "Hospital")
