@@ -13,12 +13,17 @@ public class GameEnd : MonoBehaviour
 
     public Text youWinTxt;
 
+    private GameObject heli;
+    private HelicopterMovement heliMoveScript;
+
     // Start is called before the first frame update
     void Start()
     {
         restartTxt = GameObject.Find("Restart").GetComponent<Text>();
         youWinTxt = GameObject.Find("You Win").GetComponent<Text>();
 
+        heli = GameObject.Find("Helicopter");
+        heliMoveScript = heli.GetComponent<HelicopterMovement>();
     }
 
     // Update is called once per frame
@@ -29,6 +34,8 @@ public class GameEnd : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        solFound = false;
+
         assets = GameObject.FindObjectsOfType<GameObject>();
 
         foreach (GameObject asset in assets)
@@ -44,6 +51,7 @@ public class GameEnd : MonoBehaviour
         {
             youWinTxt.text = "YOU WIN";
             restartTxt.text = "PRESS R TO RESTART";
+            heliMoveScript.moveSpeed = 0;
         }
     }   
 }
