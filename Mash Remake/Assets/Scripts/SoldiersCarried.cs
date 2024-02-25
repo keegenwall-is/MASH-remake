@@ -25,6 +25,8 @@ public class SoldiersCarried : MonoBehaviour
 
     public AudioSource solPickupSFX;
 
+    public bool maxCapacity = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +41,9 @@ public class SoldiersCarried : MonoBehaviour
     {
         if (noOfSol == 3)
         {
+
+            maxCapacity = true;
+
             if (!isHeliFullSFXPlaying)
             {
                 anim.Play("HelicopterFullAnim");
@@ -49,6 +54,9 @@ public class SoldiersCarried : MonoBehaviour
             }
         } else
         {
+
+            maxCapacity = false;
+
             if (isHeliFullSFXPlaying)
             {
                 anim.Play("HelicopterMoveAnim");
@@ -64,12 +72,16 @@ public class SoldiersCarried : MonoBehaviour
     {
         if (collision.gameObject.tag == "Soldier")
         {
-            noOfSol += 1;
-            //Debug.Log(noOfSol);
+            if (!maxCapacity)
+            {
+                noOfSol += 1;
+                //Debug.Log(noOfSol);
 
-            currentSol.text = "Soldiers in Helicopter: " + noOfSol;
+                currentSol.text = "Soldiers in Helicopter: " + noOfSol;
 
-            solPickupSFX.Play();
+                solPickupSFX.Play();
+            }
+            
         }
 
         if (collision.gameObject.tag == "Hospital")

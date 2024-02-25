@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class SoldierController : MonoBehaviour
 {
+    public GameObject heli;
+
+    public SoldiersCarried solCarriedScript;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        heli = GameObject.Find("Helicopter");
+        solCarriedScript = heli.GetComponent<SoldiersCarried>();
     }
 
     // Update is called once per frame
@@ -18,7 +23,10 @@ public class SoldierController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(gameObject);
-        //Debug.Log("hit");
+        if (!solCarriedScript.maxCapacity)
+        {
+            Destroy(gameObject);
+            //Debug.Log("hit");
+        }
     }
 }
