@@ -30,8 +30,6 @@ public class SoldiersCarried : MonoBehaviour
         canvas = GameObject.Find("Canvas");
         scoreCounterScript = canvas.GetComponent<ScoreCounter>();
         anim = GetComponent<Animator>();
-        //heliFullSFX = GetComponent<AudioClip>();
-        //heliNotFullSFX = GetComponent<AudioClip>();
     }
 
     // Update is called once per frame
